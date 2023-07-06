@@ -8,8 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.edyalves.projeto01.domain.Cidade;
+import com.edyalves.projeto01.domain.Estado;
 import com.edyalves.projeto01.domain.Experiencia;
 import com.edyalves.projeto01.domain.Habilidade;
+import com.edyalves.projeto01.repositories.CidadeRepository;
+import com.edyalves.projeto01.repositories.EstadoRepository;
 import com.edyalves.projeto01.repositories.ExperienciaRepository;
 import com.edyalves.projeto01.repositories.HabilidadeRepository;
 
@@ -20,6 +24,10 @@ public class Projeto01Application implements CommandLineRunner{
 	private HabilidadeRepository habilidadeRepository;
 	@Autowired
 	private ExperienciaRepository experienciaRepository;
+	@Autowired
+	private EstadoRepository estadoRepository;
+	@Autowired
+	private CidadeRepository cidadeRepository;
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -39,7 +47,15 @@ public class Projeto01Application implements CommandLineRunner{
 		habilidadeRepository.saveAll(Arrays.asList(hab1, hab2));
 		experienciaRepository.saveAll(Arrays.asList(exp1, exp2));
 		
+		Estado est1 = new Estado(null, "São Paulo");
 		
+		Cidade cid1 = new Cidade(null, "São Paulo", est1);
+		Cidade cid2 = new Cidade(null, "Campinas", est1);
+		
+		est1.getCidades().addAll(Arrays.asList(cid1,cid2));
+		
+		estadoRepository.saveAll(Arrays.asList(est1));
+		cidadeRepository.saveAll(Arrays.asList(cid1, cid2));
 	}
 
 }
