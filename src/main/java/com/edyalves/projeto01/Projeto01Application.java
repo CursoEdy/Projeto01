@@ -9,10 +9,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.edyalves.projeto01.domain.Cidade;
+import com.edyalves.projeto01.domain.Endereco;
 import com.edyalves.projeto01.domain.Estado;
 import com.edyalves.projeto01.domain.Experiencia;
 import com.edyalves.projeto01.domain.Habilidade;
 import com.edyalves.projeto01.repositories.CidadeRepository;
+import com.edyalves.projeto01.repositories.EndereçoRepository;
 import com.edyalves.projeto01.repositories.EstadoRepository;
 import com.edyalves.projeto01.repositories.ExperienciaRepository;
 import com.edyalves.projeto01.repositories.HabilidadeRepository;
@@ -28,6 +30,8 @@ public class Projeto01Application implements CommandLineRunner{
 	private EstadoRepository estadoRepository;
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	@Autowired
+	private EndereçoRepository enderecoRepository;
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -56,6 +60,10 @@ public class Projeto01Application implements CommandLineRunner{
 		
 		estadoRepository.saveAll(Arrays.asList(est1));
 		cidadeRepository.saveAll(Arrays.asList(cid1, cid2));
+		
+		Endereco end1 = new Endereco(null, "Endereço 01", "01", "Bairro 01", "12548-150", cid2);
+		
+		enderecoRepository.saveAll(Arrays.asList(end1));
 	}
 
 }
