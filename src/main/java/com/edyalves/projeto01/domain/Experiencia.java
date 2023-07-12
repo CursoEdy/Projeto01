@@ -22,9 +22,11 @@ public class Experiencia implements Serializable{
 	private Date inicio;
 	private Date termino;
 	
+	private Usuario usuario;
+	
 	public Experiencia() {}
 
-	public Experiencia(Integer id, String nome, String cargo, String descricao, Date inicio, Date termino) {
+	public Experiencia(Integer id, String nome, String cargo, String descricao, Date inicio, Date termino, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -32,6 +34,7 @@ public class Experiencia implements Serializable{
 		this.descricao = descricao;
 		this.inicio = inicio;
 		this.termino = termino;
+		this.usuario = usuario;
 	}
 
 	public Integer getId() {
@@ -80,6 +83,14 @@ public class Experiencia implements Serializable{
 
 	public void setTermino(Date termino) {
 		this.termino = termino;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

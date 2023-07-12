@@ -17,12 +17,15 @@ public class Habilidade implements Serializable{
 	private Integer id;
 	private String nome;
 	
+	private Usuario usuario;
+	
 	public Habilidade() {}
 
-	public Habilidade(Integer id, String nome) {
+	public Habilidade(Integer id, String nome, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.usuario = usuario;
 	}
 
 	public Integer getId() {
@@ -44,6 +47,14 @@ public class Habilidade implements Serializable{
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override
