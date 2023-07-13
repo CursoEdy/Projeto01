@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Habilidade implements Serializable{
@@ -17,6 +19,8 @@ public class Habilidade implements Serializable{
 	private Integer id;
 	private String nome;
 	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 	
 	public Habilidade() {}

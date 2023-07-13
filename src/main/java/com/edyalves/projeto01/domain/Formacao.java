@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.edyalves.projeto01.domain.enums.EstadoFormacao;
 
@@ -22,15 +24,20 @@ public class Formacao implements Serializable {
 	private String termino;
 	private Integer status;
 	
+	@ManyToOne
+	@JoinColumn(name = "usuario")
+	private Usuario usuario;
+	
 	public Formacao() {}
 
-	public Formacao(Integer id, String nome, String descricao, String termino, EstadoFormacao status) {
+	public Formacao(Integer id, String nome, String descricao, String termino, EstadoFormacao status, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.termino = termino;
 		this.status = (status==null) ? null : status.getCod();
+		this.usuario = usuario;
 	}
 
 	public Integer getId() {
@@ -76,6 +83,14 @@ public class Formacao implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

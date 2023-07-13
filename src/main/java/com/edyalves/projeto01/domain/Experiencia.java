@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Experiencia implements Serializable{
@@ -22,6 +26,9 @@ public class Experiencia implements Serializable{
 	private Date inicio;
 	private Date termino;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 	
 	public Experiencia() {}

@@ -13,6 +13,7 @@ import com.edyalves.projeto01.domain.Endereco;
 import com.edyalves.projeto01.domain.Estado;
 import com.edyalves.projeto01.domain.Experiencia;
 import com.edyalves.projeto01.domain.Habilidade;
+import com.edyalves.projeto01.domain.Usuario;
 import com.edyalves.projeto01.repositories.CidadeRepository;
 import com.edyalves.projeto01.repositories.EndereçoRepository;
 import com.edyalves.projeto01.repositories.EstadoRepository;
@@ -42,11 +43,14 @@ public class Projeto01Application implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Habilidade hab1 = new Habilidade(null, "Java");
-		Habilidade hab2 = new Habilidade(null, "Orientação a objeto");
+		Usuario user1 = new Usuario(null, "User 1", "email1@gmail.com");
+		Usuario user2 = new Usuario(null, "User 2", "email2@gmail.com");
 		
-		Experiencia exp1 = new Experiencia(null, "Experiência 1", "Cargo 1", "Descrição 1", sdf.parse("01/03/2015"), sdf.parse("15/05/2019"));
-		Experiencia exp2 = new Experiencia(null, "Experiência 2", "Cargo 2", "Descrição 2", sdf.parse("20/07/2019"), sdf.parse("06/07/2020"));
+		Habilidade hab1 = new Habilidade(null, "Java", user1);
+		Habilidade hab2 = new Habilidade(null, "Orientação a objeto", user2);
+		
+		Experiencia exp1 = new Experiencia(null, "Experiência 1", "Cargo 1", "Descrição 1", sdf.parse("01/03/2015"), sdf.parse("15/05/2019"), user1);
+		Experiencia exp2 = new Experiencia(null, "Experiência 2", "Cargo 2", "Descrição 2", sdf.parse("20/07/2019"), sdf.parse("06/07/2020"), user2);
 		
 		habilidadeRepository.saveAll(Arrays.asList(hab1, hab2));
 		experienciaRepository.saveAll(Arrays.asList(exp1, exp2));
