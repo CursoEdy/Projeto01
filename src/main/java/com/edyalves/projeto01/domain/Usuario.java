@@ -1,13 +1,18 @@
 package com.edyalves.projeto01.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Usuario implements Serializable{
@@ -20,7 +25,11 @@ public class Usuario implements Serializable{
 	private String email;
 	
 	@OneToOne(mappedBy = "usuario")
-	private Endereco endereco;
+	private Endereco enderecos;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<Experiencia> experiencia = new ArrayList<>();
 	
 	public Usuario () {}
 
@@ -55,12 +64,20 @@ public class Usuario implements Serializable{
 		this.email = email;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public Endereco getEnderecos() {
+		return enderecos;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setEnderecos(Endereco endereco) {
+		this.enderecos = endereco;
+	}
+
+	public List<Experiencia> getExperiencia() {
+		return experiencia;
+	}
+
+	public void setExperiencia(List<Experiencia> experiencia) {
+		this.experiencia = experiencia;
 	}
 
 	@Override
