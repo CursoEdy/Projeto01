@@ -1,15 +1,12 @@
 package com.edyalves.projeto01.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -22,25 +19,17 @@ public class Usuario implements Serializable{
 	private String nome;
 	private String email;
 	
-	@OneToMany(mappedBy = "usuario")
-	List<Experiencia> experiencias = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "usuario")
-	List<Habilidade> habilidades = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "usuario")
-	List<Formacao> formacao = new ArrayList<>();
-	
 	@OneToOne(mappedBy = "usuario")
 	private Endereco endereco;
 	
 	public Usuario () {}
 
-	public Usuario(Integer id, String nome, String email) {
+	public Usuario(Integer id, String nome, String email, Endereco endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		this.endereco = endereco;
 	}
 
 	public Integer getId() {
@@ -65,6 +54,14 @@ public class Usuario implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
