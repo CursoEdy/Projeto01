@@ -56,14 +56,14 @@ public class Projeto01Application implements CommandLineRunner{
 		estadoRepository.saveAll(Arrays.asList(est1));
 		cidadeRepository.saveAll(Arrays.asList(cid1, cid2));
 		
-		Endereco end1 = new Endereco(null, "Endereço 01", "01", "Bairro 01", "12548-150", cid2);
-		Endereco end2 = new Endereco(null, "Endereço 01", "01", "Bairro 01", "12548-150", cid1);
+		Usuario user1 = new Usuario(null, "User 1", "email1@gmail.com");
+		Usuario user2 = new Usuario(null, "User 2", "email2@gmail.com");
 		
-		Usuario user1 = new Usuario(null, "User 1", "email1@gmail.com", end1);
-		Usuario user2 = new Usuario(null, "User 2", "email2@gmail.com", end2);
+		Endereco end1 = new Endereco(null, "Endereço 01", "01", "Bairro 01", "12548-150", cid2, user1);
+		Endereco end2 = new Endereco(null, "Endereço 01", "01", "Bairro 01", "12548-150", cid1, user2);
 		
-		enderecoRepository.saveAll(Arrays.asList(end1, end2));
 		usuarioRepository.saveAll(Arrays.asList(user1, user2));
+		enderecoRepository.saveAll(Arrays.asList(end1, end2));
 		
 		Habilidade hab1 = new Habilidade(null, "Java");
 		Habilidade hab2 = new Habilidade(null, "Orientação a objeto");

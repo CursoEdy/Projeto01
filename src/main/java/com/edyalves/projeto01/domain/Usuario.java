@@ -24,12 +24,11 @@ public class Usuario implements Serializable{
 	
 	public Usuario () {}
 
-	public Usuario(Integer id, String nome, String email, Endereco endereco) {
+	public Usuario(Integer id, String nome, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.endereco = endereco;
 	}
 
 	public Integer getId() {
