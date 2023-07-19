@@ -31,6 +31,10 @@ public class Usuario implements Serializable{
 	@OneToMany(mappedBy = "usuario")
 	private List<Experiencia> experiencia = new ArrayList<>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<Habilidade> habilidades = new ArrayList<>();
+	
 	public Usuario () {}
 
 	public Usuario(Integer id, String nome, String email) {
@@ -78,6 +82,14 @@ public class Usuario implements Serializable{
 
 	public void setExperiencia(List<Experiencia> experiencia) {
 		this.experiencia = experiencia;
+	}
+
+	public List<Habilidade> getHabilidades() {
+		return habilidades;
+	}
+
+	public void setHabilidades(List<Habilidade> habilidades) {
+		this.habilidades = habilidades;
 	}
 
 	@Override
