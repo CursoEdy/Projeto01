@@ -10,10 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.edyalves.projeto01.domain.enums.EstadoFormacao;
+import com.edyalves.projeto01.domain.enums.EstadoCurso;
 
 @Entity
-public class Formacao implements Serializable {
+public class Curso implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -27,9 +27,9 @@ public class Formacao implements Serializable {
 	@JoinColumn(name ="usuario_id")
 	private Usuario usuario;
 	
-	public Formacao() {}
+	public Curso() {}
 
-	public Formacao(Integer id, String nome, String duracao, EstadoFormacao status, Usuario usuario) {
+	public Curso(Integer id, String nome, String duracao, EstadoCurso status, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -62,11 +62,11 @@ public class Formacao implements Serializable {
 		this.duracao = duracao;
 	}
 
-	public EstadoFormacao getStatus() {
-		return EstadoFormacao.toEnum(status);
+	public EstadoCurso getStatus() {
+		return EstadoCurso.toEnum(status);
 	}
 
-	public void setStatus(EstadoFormacao status) {
+	public void setStatus(EstadoCurso status) {
 		this.status = status.getCod();
 	}
 
@@ -91,7 +91,7 @@ public class Formacao implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Formacao other = (Formacao) obj;
+		Curso other = (Curso) obj;
 		return Objects.equals(id, other.id);
 	}
 }

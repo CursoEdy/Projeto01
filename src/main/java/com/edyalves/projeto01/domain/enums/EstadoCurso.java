@@ -1,6 +1,6 @@
 package com.edyalves.projeto01.domain.enums;
 
-public enum EstadoFormacao {
+public enum EstadoCurso {
 	
 	CURSANDO(1, "Cursando"),
 	COMPLETO(2, "Completo"),
@@ -9,7 +9,7 @@ public enum EstadoFormacao {
 	private int cod;
 	private String descricao;
 	
-	private EstadoFormacao(int cod, String descricao) {
+	private EstadoCurso(int cod, String descricao) {
 		this.cod = cod;
 		this.descricao = descricao;
 	}
@@ -30,13 +30,13 @@ public enum EstadoFormacao {
 		this.descricao = descricao;
 	}
 	
-	public static EstadoFormacao toEnum(Integer cod) {
+	public static EstadoCurso toEnum(Integer cod) {
 		
 		if (cod == null) {
 			return null;
 		}
 		
-		for (EstadoFormacao x : EstadoFormacao.values()) {
+		for (EstadoCurso x : EstadoCurso.values()) {
 			if(cod.equals(x.getCod())) {
 				return x;
 			}

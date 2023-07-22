@@ -37,7 +37,7 @@ public class Usuario implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
-	private List<Formacao> formacao = new ArrayList<>();
+	private List<Curso> formacao = new ArrayList<>();
 
 	public Usuario(Integer id, String nome, String email) {
 		super();
@@ -94,11 +94,11 @@ public class Usuario implements Serializable{
 		this.habilidades = habilidades;
 	}
 
-	public List<Formacao> getFormacao() {
+	public List<Curso> getFormacao() {
 		return formacao;
 	}
 
-	public void setFormacao(List<Formacao> formacao) {
+	public void setFormacao(List<Curso> formacao) {
 		this.formacao = formacao;
 	}
 

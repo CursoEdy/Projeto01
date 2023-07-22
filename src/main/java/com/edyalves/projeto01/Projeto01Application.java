@@ -12,15 +12,15 @@ import com.edyalves.projeto01.domain.Cidade;
 import com.edyalves.projeto01.domain.Endereco;
 import com.edyalves.projeto01.domain.Estado;
 import com.edyalves.projeto01.domain.Experiencia;
-import com.edyalves.projeto01.domain.Formacao;
+import com.edyalves.projeto01.domain.Curso;
 import com.edyalves.projeto01.domain.Habilidade;
 import com.edyalves.projeto01.domain.Usuario;
-import com.edyalves.projeto01.domain.enums.EstadoFormacao;
+import com.edyalves.projeto01.domain.enums.EstadoCurso;
 import com.edyalves.projeto01.repositories.CidadeRepository;
 import com.edyalves.projeto01.repositories.EndereçoRepository;
 import com.edyalves.projeto01.repositories.EstadoRepository;
 import com.edyalves.projeto01.repositories.ExperienciaRepository;
-import com.edyalves.projeto01.repositories.FormacaoRepository;
+import com.edyalves.projeto01.repositories.CursoRepository;
 import com.edyalves.projeto01.repositories.HabilidadeRepository;
 import com.edyalves.projeto01.repositories.UsuarioRepository;
 
@@ -40,7 +40,7 @@ public class Projeto01Application implements CommandLineRunner{
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	@Autowired
-	private FormacaoRepository formacaoRepository;
+	private CursoRepository formacaoRepository;
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -82,8 +82,8 @@ public class Projeto01Application implements CommandLineRunner{
 		user1.getExperiencia().addAll(Arrays.asList(exp1));
 		user2.getExperiencia().addAll(Arrays.asList(exp2));
 		
-		Formacao form1 = new Formacao(null, "Analise e desenvolvimento de sistema","Duração 2 anos", EstadoFormacao.COMPLETO, user1);
-		Formacao form2 = new Formacao(null, "Ciência da computação","Duração 4 anos", EstadoFormacao.CURSANDO, user2);
+		Curso form1 = new Curso(null, "Analise e desenvolvimento de sistema","Duração 2 anos", EstadoCurso.COMPLETO, user1);
+		Curso form2 = new Curso(null, "Ciência da computação","Duração 4 anos", EstadoCurso.CURSANDO, user2);
 		
 		formacaoRepository.saveAll(Arrays.asList(form1, form2));
 		habilidadeRepository.saveAll(Arrays.asList(hab1, hab2));
