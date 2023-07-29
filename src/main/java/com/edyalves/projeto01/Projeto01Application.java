@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.edyalves.projeto01.domain.Categoria;
 import com.edyalves.projeto01.domain.Cidade;
 import com.edyalves.projeto01.domain.Curso;
 import com.edyalves.projeto01.domain.Endereco;
@@ -15,6 +16,7 @@ import com.edyalves.projeto01.domain.Estado;
 import com.edyalves.projeto01.domain.Experiencia;
 import com.edyalves.projeto01.domain.Habilidade;
 import com.edyalves.projeto01.domain.Usuario;
+import com.edyalves.projeto01.repositories.CategoriaRepository;
 import com.edyalves.projeto01.repositories.CidadeRepository;
 import com.edyalves.projeto01.repositories.CursoRepository;
 import com.edyalves.projeto01.repositories.EndereçoRepository;
@@ -40,6 +42,8 @@ public class Projeto01Application implements CommandLineRunner{
 	private UsuarioRepository usuarioRepository;
 	@Autowired
 	private CursoRepository formacaoRepository;
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -49,6 +53,12 @@ public class Projeto01Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Categoria cat1 = new Categoria(null, "Saúde");
+		Categoria cat2 = new Categoria(null, "Técnologia");
+		Categoria cat3 = new Categoria(null, "Desenvolvimento Social");
+		Categoria cat4 = new Categoria(null, "Educação");
+		Categoria cat5 = new Categoria(null, "Turismo");
 		
 		Estado est1 = new Estado(null, "São Paulo");
 		
@@ -81,10 +91,21 @@ public class Projeto01Application implements CommandLineRunner{
 		user1.getExperiencia().addAll(Arrays.asList(exp1));
 		user2.getExperiencia().addAll(Arrays.asList(exp2));
 		
-		Curso form1 = new Curso(null, "Analise e desenvolvimento de sistema");
-		Curso form2 = new Curso(null, "Ciência da computação");
+		Curso curso1 = new Curso(null, "Analise e desenvolvimento de sistema", cat2);
+		Curso curso2 = new Curso(null, "Ciência da computação", cat2);
+		Curso curso3 = new Curso(null, "Técnico de Enfermagem", cat1);
+		Curso curso4 = new Curso(null, "Agente de aeroporto", cat5);
+		Curso curso5 = new Curso(null, "Agente de desenvolvimento local", cat3);
+		Curso curso6 = new Curso(null, "Educador nfantil", cat4);
 		
-		formacaoRepository.saveAll(Arrays.asList(form1, form2));
+		cat1.getCursos().addAll(Arrays.asList(curso3));
+		cat2.getCursos().addAll(Arrays.asList(curso1, curso2));
+		cat3.getCursos().addAll(Arrays.asList(curso5));
+		cat4.getCursos().addAll(Arrays.asList(curso6));
+		cat5.getCursos().addAll(Arrays.asList(curso4));
+		
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5));
+		formacaoRepository.saveAll(Arrays.asList(curso1,curso2, curso3, curso4, curso5, curso6));
 		habilidadeRepository.saveAll(Arrays.asList(hab1, hab2));
 		experienciaRepository.saveAll(Arrays.asList(exp1, exp2));
 	}

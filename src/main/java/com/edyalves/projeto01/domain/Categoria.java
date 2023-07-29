@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Categoria implements Serializable {
@@ -19,7 +22,9 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	private List<Curso> cusos = new ArrayList<>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "categorias")
+	private List<Curso> cursos = new ArrayList<>();
 	
 	public Categoria() {}
 
@@ -45,12 +50,12 @@ public class Categoria implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Curso> getCusos() {
-		return cusos;
+	public List<Curso> getCursos() {
+		return cursos;
 	}
 
-	public void setCusos(List<Curso> cusos) {
-		this.cusos = cusos;
+	public void setCursos(List<Curso> cusos) {
+		this.cursos = cusos;
 	}
 
 	@Override
