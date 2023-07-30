@@ -28,12 +28,14 @@ public class Usuario implements Serializable{
 	private Endereco enderecos;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "experienciaDoUsuario")
 	private List<Experiencia> experiencia = new ArrayList<>();
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "habilidadeDoUsuario")
 	private List<Habilidade> habilidades = new ArrayList<>();
+	
+	public Usuario() {}
 
 	public Usuario(Integer id, String nome, String email) {
 		super();

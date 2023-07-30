@@ -26,11 +26,11 @@ public class Experiencia implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name ="usuario_id")
-	private Usuario usuario;
+	private Usuario experienciaDoUsuario;
 	
 	public Experiencia() {}
 
-	public Experiencia(Integer id, String nome, String cargo, String descricao, Date inicio, Date termino, Usuario usuario) {
+	public Experiencia(Integer id, String nome, String cargo, String descricao, Date inicio, Date termino, Usuario experienciaDoUsuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -38,7 +38,7 @@ public class Experiencia implements Serializable{
 		this.descricao = descricao;
 		this.inicio = inicio;
 		this.termino = termino;
-		this.usuario = usuario;
+		this.experienciaDoUsuario = experienciaDoUsuario;
 	}
 
 	public Integer getId() {
@@ -94,12 +94,12 @@ public class Experiencia implements Serializable{
 		return Objects.hash(id);
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Usuario getExperienciaDoUsuario() {
+		return experienciaDoUsuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setExperienciaDoUsuario(Usuario experienciaDoUsuario) {
+		this.experienciaDoUsuario = experienciaDoUsuario;
 	}
 
 	@Override

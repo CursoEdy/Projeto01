@@ -21,15 +21,15 @@ public class Habilidade implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	private Usuario habilidadeDoUsuario;
 	
 	public Habilidade() {}
 
-	public Habilidade(Integer id, String nome, Usuario usuario) {
+	public Habilidade(Integer id, String nome, Usuario habilidadeDoUsuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.usuario = usuario;
+		this.habilidadeDoUsuario = habilidadeDoUsuario;
 	}
 
 	public Integer getId() {
@@ -48,12 +48,12 @@ public class Habilidade implements Serializable{
 		this.nome = nome;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Usuario getHabilidadeDoUsuario() {
+		return habilidadeDoUsuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setHabilidadeDoUsuario(Usuario habilidadeDoUsuario) {
+		this.habilidadeDoUsuario = habilidadeDoUsuario;
 	}
 
 	@Override
